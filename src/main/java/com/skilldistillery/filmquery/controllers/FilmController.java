@@ -36,9 +36,14 @@ public class FilmController {
 			if (film != null) {
 				mv.addObject("film", film);
 				mv.setViewName("film");
-			} 
+			}  else {
+				mv.addObject("film", null);  // Explicitly pass null if film not found
+	            mv.setViewName("film");    
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+//			mv.addObject("film", null); 
+//			mv.setViewName("film");
 		}
 
 		return mv;
@@ -57,8 +62,8 @@ public class FilmController {
 			mv.setViewName("AddNewFilm");
 	    } catch (Exception e) {
 	        e.printStackTrace();
-	        mv.addObject("error", "Error while adding the film.");
-	        mv.setViewName("ErrorPage");
+//	        mv.addObject("error", "Error while adding the film.");
+//	        mv.setViewName("ErrorPage");
 	    }
 		
 

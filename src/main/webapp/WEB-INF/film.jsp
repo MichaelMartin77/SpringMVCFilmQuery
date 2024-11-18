@@ -23,3 +23,4 @@
 
 	<%@ include file="bootstrapfooter.jsp"%>
 </body>
+</html>
