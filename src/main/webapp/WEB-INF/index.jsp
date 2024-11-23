@@ -16,6 +16,12 @@
 			name="doThis" value="Find">
 	</form>
 	
+	<h3>Search Films by Keyword</h3>
+	<form  action="findByKeyword.do" method=get>
+	<input type="text" name="keyword" required>
+	<input type="submit" value="Search">
+	</form>
+	
 	
 	<h3>Add a new Film</h3>
 	<form action="AddNewFilm.do">

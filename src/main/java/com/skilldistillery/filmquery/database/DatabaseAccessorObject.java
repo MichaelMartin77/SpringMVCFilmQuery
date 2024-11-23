@@ -197,9 +197,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		try {
 			conn = DriverManager.getConnection(URL, name, pwd);
-
-			conn.setAutoCommit(false);
-
 			String sql = "INSERT INTO film (title, language_id, rental_rate, replacement_cost) VALUES (?, 1, ?, ?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
