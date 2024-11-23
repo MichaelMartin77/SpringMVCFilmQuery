@@ -74,9 +74,7 @@ public class FilmController {
 	@RequestMapping(path = "findByKeyword.do")
 	public ModelAndView findFilmsByKeyword(@RequestParam("keyword") String keyword) {
 		ModelAndView mv = new ModelAndView();
-
 		List<Film> films = dao.searchFilmByKeyword(keyword);
-		System.out.println(films);
 		if (films != null && !films.isEmpty()) {
 			mv.addObject("newFilms", films);
 			 mv.setViewName("search-results");
@@ -88,7 +86,7 @@ public class FilmController {
 	}
 
 	
-	@PostMapping (path = "deleteFilm.do")
+	@PostMapping(path = "deleteFilm.do")
 	public ModelAndView deleteFilm(@RequestParam("id") int id) {
 		ModelAndView mv = new ModelAndView(); 
 		
@@ -106,9 +104,9 @@ public class FilmController {
 		} catch (SQLException e) {
 	        e.printStackTrace();
 	        mv.addObject("message", "Error deleting the film.");
-	        mv.setViewName("delete-result");
+	        
 	    }
-		
+		mv.setViewName("delete-result");
 		return mv;
 	}
 }
