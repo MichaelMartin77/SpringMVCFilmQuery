@@ -20,6 +20,11 @@
 		<h3>No such film found.</h3>
 	</c:if>
 	
+	<form action="deleteFilm.do" method="post">
+						<input type="hidden" name="id" value="${film.id}" />
+						<button type="submit">Delete Film</button>
+					</form></li>
+	
 
 	<%@ include file="bootstrapfooter.jsp"%>
 </body>

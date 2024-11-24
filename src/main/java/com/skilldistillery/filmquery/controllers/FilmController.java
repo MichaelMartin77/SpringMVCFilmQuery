@@ -88,25 +88,25 @@ public class FilmController {
 	
 	@PostMapping(path = "deleteFilm.do")
 	public ModelAndView deleteFilm(@RequestParam("id") int id) {
-		ModelAndView mv = new ModelAndView(); 
-		
-		try {
-			Film film = dao.findFilmById(id); 
-			if(film != null) {
-				boolean isDeleted = dao.deleteFilm(film); 
-				
-				if(isDeleted) {
-					mv.addObject("message", "Film deleted successfully");
-				} else {
-					mv.addObject("message", "Film not found. Unable to delete"); 
-				}
-			}
-		} catch (SQLException e) {
+	    ModelAndView mv = new ModelAndView();
+	    try {
+	        Film film = dao.findFilmById(id);
+	        if (film != null) {
+	            boolean isDeleted = dao.deleteFilm(film);
+	            if (isDeleted) {
+	                mv.addObject("message", "Film deleted successfully.");
+	            } else {
+	                mv.addObject("message", "Film not found. Unable to delete.");
+	            }
+	        } else {
+	            mv.addObject("message", "No film exists with the provided ID.");
+	        }
+	    } catch (SQLException e) {
 	        e.printStackTrace();
 	        mv.addObject("message", "Error deleting the film.");
-	        
 	    }
-		mv.setViewName("delete-result");
-		return mv;
+	    mv.setViewName("delete-result");
+	    return mv;
 	}
+
 }
