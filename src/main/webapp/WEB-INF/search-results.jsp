@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Search Results page</title>
+<%@ include file="bootstraphead.jsp"%>
 </head>
 <body>
 	<h1>Search Results</h1>
@@ -15,6 +16,7 @@
 			<c:forEach var="film" items="${newFilms}">
 				<li><strong>Title: </strong> ${film.title}<br> 
 				<strong>Description: </strong> ${film.description}<br>
+				Id: ${film.id}
 					<form action="deleteFilm.do" method="post">
 						<input type="hidden" name="id" value="${film.id}" />
 						<button type="submit">Delete Film</button>
@@ -27,5 +29,6 @@
     </c:if>
 
     <a href="index.do">Back to Home</a>
+    <%@ include file="bootstrapfooter.jsp"%>
 </body>
 </html>

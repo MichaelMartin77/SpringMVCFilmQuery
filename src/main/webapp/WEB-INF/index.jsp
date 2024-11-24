@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>SD Films</title>
-
+<%@ include file="bootstraphead.jsp"%>
 </head>
 <body>
 	<h1>Film Query Menu</h1>
@@ -30,6 +30,6 @@
 		<input type="submit" name="description" value="submit">
 	</form>
 
-
+<%@ include file="bootstrapfooter.jsp"%>
 </body>
 </html>
