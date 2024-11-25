@@ -146,6 +146,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			while (rs.next()) {
 				Film film = new Film();
 				int filmId = rs.getInt("id");
+				film.setId(rs.getInt("id"));
+//				film.setId(filmId);
 				film.setTitle(rs.getString("title"));
 				film.setReleaseYear(rs.getInt("release_year"));
 				film.setRating(rs.getString("rating"));

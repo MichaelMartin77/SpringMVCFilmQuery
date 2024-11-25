@@ -47,7 +47,6 @@ public class FilmController {
 			mv.addObject("film", null); 
 			mv.setViewName("film");
 		}
-
 		return mv;
 	}
 
