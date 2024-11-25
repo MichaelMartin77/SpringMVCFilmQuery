@@ -50,7 +50,7 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "AddNewFilm.do")
+	@PostMapping(path = "AddNewFilm.do")
 	public ModelAndView addFilm(@RequestParam("title") String title, @RequestParam("desc") String desc) {
 		ModelAndView mv = new ModelAndView();
 
@@ -59,12 +59,13 @@ public class FilmController {
 		film.setDescription(desc);
 		try {
 			dao.createFilm(film);
+			System.out.println(film);
 			mv.addObject("film", film);
 			mv.setViewName("AddNewFilm");
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("Error occurred: " + e.getMessage());
 	        mv.addObject("error", "Error while adding the film.");
-	        mv.setViewName("ErrorPage");
 		}
 
 		return mv;
@@ -114,7 +115,7 @@ public class FilmController {
 		try {
 			Film film = dao.findFilmById(id);
 			mv.addObject("film", film);
-		    mv.setViewName("update-film");
+		    mv.setViewName("update-result");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

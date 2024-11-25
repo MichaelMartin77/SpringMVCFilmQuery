@@ -9,6 +9,7 @@
 <body>
 	<h1>Update Film</h1>
 
+	<p>Your film has been successfully updated</p>
 
 	<a href="index.do">Back to Home</a>
 	</form>

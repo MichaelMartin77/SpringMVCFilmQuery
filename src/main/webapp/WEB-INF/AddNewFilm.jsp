@@ -7,15 +7,18 @@
 <title>New Added Film</title>
 </head>
 <body>
-	<c:if test="${!empty film}">
+	<div class="container-fluid">
+	<h1>Film has been successfully added</h1>
+		<c:if test="${!empty film}">
 		Title: ${film.title}
 		<br>
 		Description: ${film.description}
 	</c:if>
 
 
-	<c:if test="${!empty error}">
-		<div class="error">${error}</div>
-	</c:if>
+		<c:if test="${!empty error}">
+			<div class="error">${error}</div>
+		</c:if>
+	</div>
 </body>
 </html>
