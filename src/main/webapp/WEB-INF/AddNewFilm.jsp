@@ -12,9 +12,9 @@
 		<br>
 		Description: ${film.description}
 	</c:if>
-	
-	
-	<c:if test="${not empty film}">
+
+
+	<c:if test="${!empty error}">
 		<div class="error">${error}</div>
 	</c:if>
 </body>

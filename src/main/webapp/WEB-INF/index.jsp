@@ -15,21 +15,21 @@
 		<input type="text" name="id"> <input type="submit"
 			name="doThis" value="Find">
 	</form>
-	
+
 	<h3>Search Films by Keyword</h3>
-	<form  action="findByKeyword.do" method=get>
-	<input type="text" name="keyword" required>
-	<input type="submit" value="Search">
-	</form>
-	
-	
-	<h3>Add a new Film</h3>
-	<form action="AddNewFilm.do">
-		Title: <input type="text" name="title"> 
-		Description: <input type="text" name="desc" >
-		<input type="submit" name="description" value="submit">
+	<form action="findByKeyword.do" method=get>
+		<input type="text" name="keyword" required> <input
+			type="submit" value="Search">
 	</form>
 
-<%@ include file="bootstrapfooter.jsp"%>
+
+	<h3>Add a new Film</h3>
+	<form action="AddNewFilm.do">
+		Title: <input type="text" name="title" required> Description:
+		<input type="text" name="desc"> <input type="submit"
+			name="description" value="submit">
+	</form>
+
+	<%@ include file="bootstrapfooter.jsp"%>
 </body>
 </html>

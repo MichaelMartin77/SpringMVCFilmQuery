@@ -1,6 +1,5 @@
 package com.skilldistillery.filmquery.database;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -244,7 +243,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return aFilm;
 	}
 
-
 	@Override
 	public boolean deleteFilm(Film afilm) {
 
@@ -278,46 +276,43 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean updateFilm(Film aFilm) {
 		String name = "student";
-	    String pwd = "student";
+		String pwd = "student";
 
-	    String updateFilmSql = "UPDATE film SET title = ?, description = ? WHERE id = ?";
-	    
-	    try (Connection conn = DriverManager.getConnection(URL, name, pwd)) {
-	        conn.setAutoCommit(false);
+		String updateFilmSql = "UPDATE film SET title = ?, description = ? WHERE id = ?";
 
-	        try (PreparedStatement stmt = conn.prepareStatement(updateFilmSql)) {
-	            // Set the title and description parameters based on the provided Film object
-	            stmt.setString(1, aFilm.getTitle());
-	            stmt.setString(2, aFilm.getDescription());
-	            stmt.setInt(3, aFilm.getId());
+		try (Connection conn = DriverManager.getConnection(URL, name, pwd)) {
+			conn.setAutoCommit(false);
 
-	            int rowsAffected = stmt.executeUpdate();
+			try (PreparedStatement stmt = conn.prepareStatement(updateFilmSql)) {
+				// Set the title and description parameters based on the provided Film object
+				stmt.setString(1, aFilm.getTitle());
+				stmt.setString(2, aFilm.getDescription());
+				stmt.setInt(3, aFilm.getId());
 
-	            if (rowsAffected == 0) {
-	                conn.rollback();
-	                return false; // No film found with this ID
-	            }
+				int rowsAffected = stmt.executeUpdate();
 
-	            conn.commit();
-	            return true;
+				if (rowsAffected == 0) {
+					conn.rollback();
+					return false; // No film found with this ID
+				}
 
-	        } catch (SQLException e) {
-	            conn.rollback();
-	            e.printStackTrace();
-	            return false;
-	        }
-	    } catch (SQLException sqle) {
-	        sqle.printStackTrace();
-	        return false;
-	    }
+				conn.commit();
+				return true;
+
+			} catch (SQLException e) {
+				conn.rollback();
+				e.printStackTrace();
+				return false;
+			}
+		} catch (SQLException sqle) {
+			sqle.printStackTrace();
+			return false;
+		}
 	}
-	
-	
-	
 
 	@Override
 	public Actor createActor(Actor actor) {
@@ -331,5 +326,4 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return false;
 	}
 
-	
 }

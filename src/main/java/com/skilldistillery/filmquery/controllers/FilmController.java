@@ -63,8 +63,8 @@ public class FilmController {
 			mv.setViewName("AddNewFilm");
 		} catch (Exception e) {
 			e.printStackTrace();
-//	        mv.addObject("error", "Error while adding the film.");
-//	        mv.setViewName("ErrorPage");
+	        mv.addObject("error", "Error while adding the film.");
+	        mv.setViewName("ErrorPage");
 		}
 
 		return mv;
@@ -106,6 +106,48 @@ public class FilmController {
 	    }
 	    mv.setViewName("delete-result");
 	    return mv;
+	}
+	
+	@RequestMapping("updateFilmForm.do")
+	public ModelAndView showUpdateForm(@RequestParam("id") int id) {
+		ModelAndView mv = new ModelAndView(); 
+		try {
+			Film film = dao.findFilmById(id);
+			mv.addObject("film", film);
+		    mv.setViewName("update-film");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		
+		
+		return mv; 
+	}
+	
+	@PostMapping("updateFilm.do")
+	public ModelAndView updateFilm(@RequestParam("id") int id, 
+            @RequestParam("title") String title, 
+            @RequestParam("description") String description) {
+		
+		Film film;
+		ModelAndView mv = new ModelAndView(); 
+		try {
+			film = dao.findFilmById(id);
+			film.setTitle(title);
+		    film.setDescription(description);
+		    boolean updated = dao.updateFilm(film);
+		    
+		    
+		    mv.addObject("message", updated ? "Update successful!" : "Update failed." );
+		    mv.setViewName("update-result");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    
+	  
+	    
+	    return mv; 
 	}
 
 }
