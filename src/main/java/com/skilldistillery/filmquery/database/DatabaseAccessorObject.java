@@ -199,16 +199,19 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		try {
 			conn = DriverManager.getConnection(URL, name, pwd);
-			String sql = "INSERT INTO film (title, language_id, rental_rate, replacement_cost) VALUES (?, 1, ?, ?)";
+			String sql = "INSERT INTO film (title, description, language_id, rental_rate, replacement_cost) VALUES (?, ?, 1, ?, ?)";
 
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, aFilm.getTitle());
-			stmt.setDouble(2, aFilm.getRentalRate());
-			stmt.setDouble(3, aFilm.getReplacementCost());
-
+			stmt.setString(2, aFilm.getDescription());
+			stmt.setDouble(3, aFilm.getRentalRate());
+			stmt.setDouble(4, aFilm.getReplacementCost());
+			
+			conn.setAutoCommit(false);
+			
 			int updateCount = stmt.executeUpdate();
-
+			
 			if (updateCount == 1) {
 
 				ResultSet keys = stmt.getGeneratedKeys();

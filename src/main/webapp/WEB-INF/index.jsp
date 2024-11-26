@@ -27,8 +27,7 @@
 		<h3>Add a new Film</h3>
 		<form action="AddNewFilm.do" method="post">
 			Title: <input type="text" name="title" required> Description:
-			<input type="text" name="desc"> <input type="submit"
-				name="description" value="submit">
+			<input type="textarea" name="desc"> <input type="submit" value="submit">
 		</form>
 
 
