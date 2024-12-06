@@ -22,7 +22,7 @@ The **MVC Film Query Application** is a web-based tool for managing film data wi
 ---
 
 ## Lessons Learned  
-1. Mastered Spring MVC for routing and data flow between views and controllers.  
+1. Implemented Spring MVC for routing and data flow between views and controllers.  
 2. Improved database operations using the DAO pattern and parameterized queries.  
 3. Designed dynamic web forms for creating, updating, and deleting records.  
 4. Enhanced understanding of MVC architecture for scalable and maintainable code.  
